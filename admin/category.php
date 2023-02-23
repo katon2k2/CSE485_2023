@@ -1,4 +1,6 @@
-<?php require '../includes/header_admin.php'; ?>
+<?php require '../includes/header_admin.php';
+        require_once('../includes/connect.php');
+?>
 
     <main class="container mt-5 mb-5">
         <!-- <h3 class="text-center text-uppercase mb-3 text-primary">CẢM NHẬN VỀ BÀI HÁT</h3> -->
@@ -14,9 +16,10 @@
                             <th>Xóa</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <?php {?>
+                        <tbody>
                         <tr>
-                            <th scope="row">1</th>
+                            <th scope="row"><?php  $count = mysqli_num_rows($result) ; echo"$row"?></th>
                             <td>Nhạc trữ tình</td>
                             <td>
                                 <a href="edit_category.php?id=1"><i class="fa-solid fa-pen-to-square"></i></a>
@@ -37,6 +40,7 @@
                         </tr>
                        
                     </tbody>
+                    <?php }?>
                 </table>
             </div>
         </div>
