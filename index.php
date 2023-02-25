@@ -42,7 +42,7 @@
             ?>
                 <div class="col-sm-3" style=" display: flex; flex-wrap: wrap;">
                     <div class="card mb-2" style="width: 100%;">
-                        <img src="images/songs/cayvagio.jpg" class="card-img-top" alt="...">
+                        <img src="<?php echo $row['hinhanh'];?>" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title text-center">
                                 <a href="detail.php?id=<?php echo $row['ma_bviet'];?>" class="text-decoration-none">
