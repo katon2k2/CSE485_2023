@@ -1,7 +1,13 @@
 <?php require 'includes/header.php';?>
 <?php include 'includes/connect.php';?>
+<?php include 'includes/sessions.php';?>
 
     <?php
+        if(isset($_GET['logout'])){
+            if($_GET['logout']==1)
+                logout();
+        }
+
         if(isset($_POST['username']) AND isset($_POST['username'])){
             $account = $_POST['username'];
             $password = $_POST['password'];
@@ -10,6 +16,7 @@
             if(mysqli_num_rows($result)>0){
                 $data = mysqli_fetch_assoc($result);
                 if($data['ten_dnhap']===$account AND $data['mat_khau']===$password){
+                    login();
                     header("Location: admin/index.php");
                     exit;
                 }

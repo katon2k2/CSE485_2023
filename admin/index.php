@@ -1,5 +1,8 @@
 <?php require '../includes/header_admin.php'; ?>
 <?php include '../includes/connect.php'; ?>
+<?php include '../includes/sessions.php';?>
+
+    <?php require_login($logged_in); ?>
 
     <main class="container mt-5 mb-5">
         <!-- <h3 class="text-center text-uppercase mb-3 text-primary">CẢM NHẬN VỀ BÀI HÁT</h3> -->
