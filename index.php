@@ -1,4 +1,5 @@
 <?php require 'includes/header.php'; ?>
+<?php include 'includes/connect.php'; ?>
 
         <div id="carouselExampleIndicators" class="carousel slide">
             <div class="carousel-indicators">
@@ -30,60 +31,32 @@
     <main class="container-fluid mt-3">
         <h3 class="text-center text-uppercase mb-3 text-primary">TOP bài hát yêu thích</h3>
         <div class="row">
-            <div class="col-sm-3">
-                <div class="card mb-2" style="width: 100%;">
-                    <img src="images/songs/cayvagio.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">
-                            <a href="" class="text-decoration-none">Cây, lá và gió</a>
-                        </h5>
-                    </div>
-                </div>
-            </div>
+        <?php   
+            $sql = "SELECT * FROM baiviet";
 
-            <div class="col-sm-3">
-                <div class="card mb-2" style="width: 100%;">
-                    <img src="images/songs/csmt.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">
-                            <a href="" class="text-decoration-none">Cuộc sống mến thương</a>
-                        </h5>
-                    </div>
-                </div>
-            </div>
+            $result = mysqli_query($conn, $sql);   
+            $row = mysqli_fetch_assoc($result);
 
-            <div class="col-sm-3">
-                <div class="card mb-2" style="width: 100%;">
-                    <img src="images/songs//longme.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">
-                            <a href="" class="text-decoration-none">Lòng mẹ</a>
-                        </h5>
+            if(mysqli_num_rows($result) > 0){
+                while($row = mysqli_fetch_assoc($result)){
+            ?>
+                <div class="col-sm-3" style=" display: flex; flex-wrap: wrap;">
+                    <div class="card mb-2" style="width: 100%;">
+                        <img src="images/songs/cayvagio.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">
+                                <a href="detail.php?id=<?php echo $row['ma_bviet'];?>" class="text-decoration-none">
+                                <?php echo $row['ten_bhat'];?>
+                                </a>
+                            </h5>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-sm-3">
-                <div class="card mb-2" style="width: 100%;">
-                    <img src="images/songs/phoipha.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">
-                            <a href="" class="text-decoration-none">Phôi pha</a>
-                        </h5>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-3">
-                <div class="card mb-2" style="width: 100%;">
-                    <img src="images/songs/noitinhyeubatdau.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title text-center my-title">
-                            <a href="" class="text-decoration-none">Nơi tình yêu bắt đầu</a>
-                        </h5>
-                    </div>
-                </div>
-            </div>
+            <?php }
+            }
+            ?>
+        
         </div>
     </main>
 <?php include 'includes/footer.php'; ?>
