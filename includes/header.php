@@ -31,9 +31,9 @@
                     </li>
                 </ul>
                 <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Nội dung cần tìm" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Tìm</button>
+                    <input class="form-control me-2" type="search" name="textimkiem" placeholder="Nội dung cần tìm" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit" name="timkiem">Tìm</button>
                 </form>
-                </div>
             </div>
         </nav>
+        

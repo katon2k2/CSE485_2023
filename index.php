@@ -29,18 +29,26 @@
             </div>
     </header>
     <main class="container-fluid mt-3">
-        <h3 class="text-center text-uppercase mb-3 text-primary">TOP bài hát yêu thích</h3>
+        <h3 class="text-center text-uppercase mb-3 text-primary" style=" font-size:30px;">
+        TOP bài hát yêu thích
+        </h3>
+        <?php
+            if(isset($_GET['timkiem'])){
+                $tukhoa = $_GET['textimkiem'];
+                $sql_timkiem = "SELECT * FROM baiviet WHERE ten_bhat LIKE '%". $tukhoa ."%' ";
+                $query_timkiem = mysqli_query($conn, $sql_timkiem); 
+            }else{
+                $tukhoa = '';
+                $sql_timkiem = "SELECT * FROM baiviet";
+                $query_timkiem = mysqli_query($conn, $sql_timkiem); 
+            }
+        ?>
         <div class="row">
-        <?php   
-            $sql = "SELECT * FROM baiviet";
-
-            $result = mysqli_query($conn, $sql);   
-            $row = mysqli_fetch_assoc($result);
-
-            if(mysqli_num_rows($result) > 0){
-                while($row = mysqli_fetch_assoc($result)){
+            <?php   
+            if(mysqli_num_rows($query_timkiem) > 0){
+                while($row = mysqli_fetch_assoc($query_timkiem)){
             ?>
-                <div class="col-sm-3" style=" display: flex; flex-wrap: wrap;">
+                <div class="col-sm-3" style=" display: flex; flex-wrap: wrap; margin-top: 15px;">
                     <div class="card mb-2" style="width: 100%;">
                         <img src="<?php echo $row['hinhanh'];?>" class="card-img-top" alt="..." >
                         <div class="card-body" style = "background-image: linear-gradient(to bottom right, Fuchsia, Blue); ">
@@ -56,7 +64,6 @@
             <?php }
             }
             ?>
-        
         </div>
     </main>
 <?php include 'includes/footer.php'; ?>
